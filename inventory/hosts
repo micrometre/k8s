@@ -1,0 +1,3 @@
+[servers]
+k8s-master 
+k8s-node1  

@@ -1,2 +1,7 @@
 - name: Initialize the Kubernetes cluster using kubeadm
-  command: kubeadm init --apiserver-advertise-address="192.168.50.10" --apiserver-cert-extra-sans="192.168.50.10"  --node-name k8s-master --pod-network-cidr=192.168.0.0/16
+  command: kubeadm init  --node-name k8s-master --pod-network-cidr=192.168.0.0/16
+  register: join_command
+- debug: msg="{{join_command.stdout}}"
+
+- name: Copy cluster initialized to local file
+  local_action: copy content="{{ join_command.stdout }}" dest="./cluster-init.txt"

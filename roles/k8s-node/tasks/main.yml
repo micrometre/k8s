@@ -12,8 +12,9 @@
     state: directory
     owner: 'ubuntu'
 
-- name: Setup kubeconfig for vagrant user
-  command: "{{ item }}"
-  with_items:
-   - cp  /etc/kubernetes/admin.conf /home/ubuntu/.kube/config
-   - chown ubuntu:ubuntu /home/ubuntu/.kube/config  
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: roles/k8s-node/files/   
+    dest: /home/ubuntu/.kube
+    owner: ubuntu
+    mode: '0644'

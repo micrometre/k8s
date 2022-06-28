@@ -1,6 +1,6 @@
-- name: Specifying a path directly
+
+- name: copy admin conf for nodes
   ansible.builtin.fetch:
     src: /etc/kubernetes/admin.conf
-    dest: roles/k8s-node/files/
-
+    dest: roles/k8s-node/files/   
     flat: yes

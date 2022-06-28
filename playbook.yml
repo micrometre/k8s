@@ -13,10 +13,10 @@
   become: yes
   gather_facts: no
   roles:
-    # k8s-master
+    - k8s-master
 
 - hosts: k8s-node1
   become: yes
   gather_facts: no
   roles:
-    - k8s-node
+    # k8s-node

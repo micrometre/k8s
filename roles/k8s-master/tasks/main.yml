@@ -1,5 +1,6 @@
-- name: Setup kubeconfig for vagrant user
-  command: "{{ item }}"
-  with_items:
-   - cp  /etc/kubernetes/admin.conf /home/ubuntu/.kube/config
-   - chown ubuntu:ubuntu /home/ubuntu/.kube/config
+- name: Specifying a path directly
+  ansible.builtin.fetch:
+    src: /etc/kubernetes/admin.conf
+    dest: roles/k8s-node/files/
+
+    flat: yes

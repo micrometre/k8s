@@ -4,3 +4,16 @@
 
 - name: Join the node to cluster
   command: sh /tmp/join-command.sh 
+
+
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: /home/ubuntu/.kube
+    state: directory
+    owner: 'ubuntu'
+
+- name: Setup kubeconfig for vagrant user
+  command: "{{ item }}"
+  with_items:
+   - cp  /etc/kubernetes/admin.conf /home/ubuntu/.kube/config
+   - chown ubuntu:ubuntu /home/ubuntu/.kube/config  

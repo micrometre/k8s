@@ -1,1 +1,1 @@
-kubeadm join 10.24.134.218:6443 --token moxeka.vruydxyv9jbmkc8g --discovery-token-ca-cert-hash sha256:75f1f62ed4914ad86b226842d6eb2669e6a7788c70ae02aa2eafa447d5877e33 
+kubeadm join 10.24.134.218:6443 --token q4kvz5.75osbqd54imd9kge --discovery-token-ca-cert-hash sha256:cc63b84fdbc475357868874a0d774f486ba2087974132dae504f6efd06c611a1 

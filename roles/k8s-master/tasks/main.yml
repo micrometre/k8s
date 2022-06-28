@@ -1,14 +1,5 @@
-- name: Initialize the Kubernetes cluster using kubeadm
-  command: kubeadm init  --node-name k8s-master --pod-network-cidr=192.168.0.0/16
-  register: join_command
-- debug: msg="{{join_command.stdout}}"
-
-- name: Copy cluster initialized to local file
-  local_action: copy content="{{ join_command.stdout }}" dest="./cluster-init.txt"
-
-- name: Generate join command
-  command: kubeadm token create --print-join-command
-  register: join_command
-
-- name: Copy join command to local file
-  local_action: copy content="{{ join_command.stdout_lines[0] }}" dest="./join-command"
+- name: Setup kubeconfig for vagrant user
+  command: "{{ item }}"
+  with_items:
+   - cp  /etc/kubernetes/admin.conf /home/ubuntu/.kube/config
+   - chown ubuntu:ubuntu /home/ubuntu/.kube/config
